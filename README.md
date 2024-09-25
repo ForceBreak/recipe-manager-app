@@ -21,3 +21,4 @@
 - Modal pop-up for confirm action reasons
 - Clear all data button
 - Manage images using Firebase storage
+- App id deployed to - https://recipe-3e7ae.web.app
