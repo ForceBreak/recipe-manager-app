@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     ingredients: ['Potato', 'Bread', 'Salt', 'Ice Cream', 'Beef'],
-    recipies: []
+    recipes: []
   }),
   getters: {},
   actions: {
@@ -11,19 +11,19 @@ export const useGlobalStore = defineStore('global', {
       this.ingredients.push(val)
     },
     addRecipe(val) {
-      this.recipies.push(val)
+      this.recipes.push(val)
     },
     removeRecipe(id) {
-      this.recipies = this.recipies.filter((elem) => elem.id != id)
+      this.recipes = this.recipes.filter((elem) => elem.id != id)
     },
     updateRecipe(item) {
-      this.recipies = this.recipies.map((elem) => {
+      this.recipes = this.recipes.map((elem) => {
         if (elem.id == item.id) return item
         else return elem
       })
     },
-    removeAllRecipies() {
-      this.recipies = []
+    removeAllRecipes() {
+      this.recipes = []
     }
   },
   persist: {

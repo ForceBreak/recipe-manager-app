@@ -38,7 +38,8 @@
       </div>
     </div>
     <div class="w-full md:w-2/3">
-      <recipeList :items="items" class="flex flex-wrap gap-4" />
+      <recipeList v-if="globalStore.recipes.length" :items="items" class="flex flex-wrap gap-4" />
+      <div v-else class="justify-center">No recipes added yet.</div>
     </div>
   </div>
 </template>
@@ -59,7 +60,7 @@ const filters = ref({
   ingredients: []
 })
 const items = computed(() => {
-  return globalStore.recipies
+  return globalStore.recipes
     .filter((elem) => elem.title.toLowerCase().includes(search.value.toLowerCase()))
     .filter((elem) =>
       filters.value.levels.length ? filters.value.levels.includes(elem.level) : elem

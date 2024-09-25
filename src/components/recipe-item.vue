@@ -52,7 +52,7 @@
       <template v-slot:main>
         <div class="flex justify-end mt-12 md:mt-16 gap-3">
           <buttonItem text="Cancel" variant="light" @click="setIsOpen(false)" />
-          <buttonItem text="Remove" variant="red" @click="emit('remove', props.item.id)" />
+          <buttonItem text="Remove" variant="red" @click="remove" />
         </div>
       </template>
     </modal>
@@ -78,6 +78,11 @@ const emit = defineEmits(['remove'])
 
 const isRemoveModal = ref(false)
 const setIsOpen = (condition) => (isRemoveModal.value = condition)
+
+const remove = () => {
+  emit('remove', {id: props.item.id, isFile: props.item.image.length})
+  setIsOpen(false)
+}
 </script>
 
 <style lang="scss" scoped></style>

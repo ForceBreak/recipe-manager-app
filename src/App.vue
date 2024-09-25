@@ -11,7 +11,7 @@
           <buttonItem text="Add" size="sm" />
         </router-link>
         <buttonItem
-          v-if="globalStore.recipies.length"
+          v-if="globalStore.recipes.length"
           text="Clear all data"
           variant="red"
           size="sm"
@@ -48,12 +48,12 @@ const globalStore = useGlobalStore()
 const isRemoveModal = ref(false)
 const setIsOpen = (condition) => (isRemoveModal.value = condition)
 const removeAll = () => {
-  const idList = this.recipies.map((elem) => elem.id)
+  const idList = globalStore.recipes.map((elem) => elem.id)
   idList.forEach((elem) => {
     removeFile({ id: elem })
   })
 
-  globalStore.removeAllRecipies()
+  globalStore.removeAllRecipes()
   setIsOpen(false)
 }
 </script>

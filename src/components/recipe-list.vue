@@ -1,12 +1,11 @@
 <template>
-  <div v-if="props.items.length">
-    <item v-for="item in props.items" :key="item.id" :item="item" @remove="removeRecipe" />
+  <div>
+    <recipeItem v-for="item in props.items" :key="item.id" :item="item" @remove="removeRecipe" />
   </div>
-  <div v-else class="justify-center">No recepies added yet.</div>
 </template>
 
 <script setup>
-import item from '@/components/recipe-item.vue'
+import recipeItem from '@/components/recipe-item.vue'
 import { useGlobalStore } from '@/stores/global'
 import { removeFile } from '@/helpers/global'
 
@@ -19,9 +18,9 @@ const props = defineProps({
   }
 })
 
-const removeRecipe = (id) => {
-  removeFile({ id })
-  globalStore.removeRecipe()
+const removeRecipe = ({id, isFile}) => {
+  if(isFile) removeFile({ id })
+  globalStore.removeRecipe(id)
 }
 </script>
 

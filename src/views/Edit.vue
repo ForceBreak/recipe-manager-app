@@ -16,5 +16,5 @@ import { useRoute } from 'vue-router'
 const globalStore = useGlobalStore()
 const route = useRoute()
 
-const item = globalStore.recipies.find(elem => elem.id == route.params.id)
+const item = globalStore.recipes.find(elem => elem.id == route.params.id)
 </script>
